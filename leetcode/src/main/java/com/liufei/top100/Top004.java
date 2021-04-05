@@ -4,7 +4,10 @@ public class Top004 {
 
 
     public static void main(String[] args) {
-
+        int[] num1 = { 1, 3 };
+        int[] num2 = { 2, 4 };
+        double medianSortedArrays = findMedianSortedArrays(num1, num2);
+        System.out.println(medianSortedArrays);
     }
 
     /**
@@ -36,7 +39,7 @@ public class Top004 {
         int n = nums2.length;
         int left = (m + n + 1) / 2;
         int right = (m + n + 2) / 2;
-        return findKth(nums1, 0, nums2, 0, left) + findKth(nums1, 0, nums2, 0, right);
+        return (findKth(nums1, 0, nums2, 0, left) + findKth(nums1, 0, nums2, 0, right)) / 2.0;
     }
 
     /**
@@ -49,17 +52,17 @@ public class Top004 {
      * @return
      */
     public static int findKth(int[] nums1, int i, int[] nums2, int j, int k) {
-        if (i >= nums1.length) return nums2[j];  // nums1为空数组
-        if (j >= nums2.length) return nums1[i];  // nums2为空数组
-        if (k == 1) {
+        if( i >= nums1.length) return nums2[j + k - 1];//nums1为空数组
+        if( j >= nums2.length) return nums1[i + k - 1];//nums2为空数组
+        if(k == 1){
             return Math.min(nums1[i], nums2[j]);
         }
         int midVal1 = (i + k / 2 - 1 < nums1.length) ? nums1[i + k / 2 - 1] : Integer.MAX_VALUE;
-        int midVal2 = (i + k / 2 - 1 < nums2.length) ? nums2[i + k / 2 - 1] : Integer.MAX_VALUE;
-        if (midVal1 < midVal2) {
-            return findKth(nums1, i + k / 2, nums2, j, k - k / 2);
-        } else {
-            return findKth(nums1, i, nums2, j + k / 2, k - k / 2);
+        int midVal2 = (j + k / 2 - 1 < nums2.length) ? nums2[j + k / 2 - 1] : Integer.MAX_VALUE;
+        if(midVal1 < midVal2){
+            return findKth(nums1, i + k / 2, nums2, j , k - k / 2);
+        }else{
+            return findKth(nums1, i, nums2, j + k / 2 , k - k / 2);
         }
     }
 }
