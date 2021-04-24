@@ -54,6 +54,7 @@ public class Top001 {
      * @return
      */
     public int[] twoSum(int[] nums, int target) {
+        // 哈希法， O(N)
         // key存储数组的值，value存储数组的索引
         Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
