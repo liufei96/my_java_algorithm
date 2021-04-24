@@ -65,8 +65,8 @@ public class SingleLinkedList {
         // 里面的值随便写，这个tmp只是一个辅助工具
         ListNode tmp = new ListNode("-1");
         tmp.next = head;
-        ListNode prev = tmp.next; // A
-        ListNode pCur = prev.next; // B
+        ListNode prev = tmp.next;
+        ListNode pCur = prev.next;
         while (pCur != null) {
             prev.next = pCur.next;
             pCur.next = tmp.next;
