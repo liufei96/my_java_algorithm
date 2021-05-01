@@ -2,7 +2,6 @@ package com.liufei.calculator;
 
 import java.util.Scanner;
 import java.util.Stack;
-import java.util.regex.Pattern;
 
 /**
  * leetcode第227题。难度：中等
@@ -31,6 +30,16 @@ import java.util.regex.Pattern;
  */
 public class Calculator_Leetcode_227 {
 
+    /**
+     * 注意几点：
+     * 1. 把减法当作加法计算。（去相反数）
+     * 2. 乘除法优先级高直接计算
+     * 3. 整数不知一位，会 >= 10
+     * 4. 表达式没有括号
+     * 5. 先做减法，避免int溢出
+     * 6. ASCII对照表。加减乘除小于数字。https://tool.oschina.net/commons?type=4
+     */
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
@@ -40,76 +49,43 @@ public class Calculator_Leetcode_227 {
 
 
     public static int calculate(String s) {
-        s = s.replace(" ", "");
-        String[] split = s.split("");
-        Stack<String> stack = new Stack<>();
-        for (int i = 0; i < split.length; i++) {
-            String str = split[i];
-            if (!isTrueSymbol(str) && !isNumber(str)) {
-                continue;
+        // 保存上一个符号
+        char sign = '+';
+        Stack<Integer> stack = new Stack<>();
+        int result = 0;
+        // 保存当前数字
+        int num = 0;
+        for (int i = 0; i < s.length(); i++) {
+            char cur = s.charAt(i);
+            if (cur >= '0') {
+                // 减去0，防止溢出
+                num = num * 10 - '0' + cur;
             }
-            switch (str) {
-                case "+":
-                case "-":
-                case "*":
-                case "/":
-                    stack.add(str);
-                    break;
-                default:
-                    // 判断前一个数字是不是
-                    if (stack.size() > 0) {
-                        String pre = stack.peek();
-                        if (isNumber(pre)) {
-                            stack.add(stack.pop() + str);
-                            break;
-                        }
-                    }
-                    // 说明是数字，不是符号
-                    if (stack.size() != 0 && stack.size() % 2 == 0) {
-                        String a = stack.pop();
-                        if (a.equals("*")) {
-                            String b = stack.pop();
-                            stack.add(String.valueOf(Integer.parseInt(b) * Integer.parseInt(str)));
-                        } else if (a.equals("/")) {
-                            String b = stack.pop();
-                            stack.add(String.valueOf(Integer.parseInt(b) / Integer.parseInt(str)));
-                        } else {
-                            stack.add(a);
-                            stack.add(str);
-                        }
-                    } else {
-                        stack.add(str);
-                    }
-            }
-
-            // 看是不是最后一个元素
-            if (i == split.length - 1 && stack.size() >= 3) {
-                String symbol = stack.get(1);
-                int result = Integer.parseInt(stack.get(0));
-                for (int j = 2; j < stack.size(); j++) {
-                    String s1 = stack.get(i);
-                    if (j % 2 != 0) {
-                        symbol = s1;
-                    } else {
-                        if (symbol.equals("+")) {
-                            result += Integer.parseInt(s1);
-                        } else if (symbol.equals("-")) {
-                            result -= Integer.parseInt(s1);
-                        }
-                    }
+            if (cur < '0' && cur != ' ' || i == s.length() - 1) {
+                // 判断上一个符号是什么
+                switch (sign) {
+                    case '+': stack.push(num);break;
+                    case '-': stack.push(-num);break;
+                    case '*':
+                        stack.push(stack.pop() * num);break;
+                    case '/':
+                        stack.push(stack.pop() / num);break;
                 }
-                stack.clear();
-                return result;
+                // 记住当前符号
+                sign = cur;
+                num = 0;
             }
         }
-        return Integer.parseInt(stack.pop());
+
+        while (!stack.isEmpty()) {
+            result += stack.pop();
+        }
+        return result;
     }
 
-    public static boolean isNumber(String str) {
-        return Pattern.matches("[0-9]+", str);
-    }
 
-    public static boolean isTrueSymbol(String str) {
-        return Pattern.matches("[+\\-*/]", str);
-    }
+    /**
+     * 扩展：优化
+     * 1. 将stack换成Deque（双向队列）
+     */
 }
