@@ -1,7 +1,6 @@
 package com.liufei.top100;
 
 import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -56,7 +55,7 @@ public class Top003 {
      */
     public static int lengthOfLongestSubstring(String s) {
         int result = 0;
-        Set<Character> set = new HashSet<>();
+        Set<Character> set = new HashSet();
         for (int i = 0; i < s.length(); i++) {
             set.add(s.charAt(i));
             for (int j = i + 1; j < s.length(); j++) {
@@ -90,7 +89,7 @@ public class Top003 {
      * @return
      */
     public static int lengthOfLongestSubstring2(String s) {
-        Set<Character> occ = new LinkedHashSet<>();
+        Set<Character> occ = new HashSet<Character>();
         int n = s.length();
         // 右指针，初始值为 -1，相当于我们在字符串的左边界的左侧，还没有开始移动
         int rk = -1, res = 0;
