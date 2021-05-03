@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Top001 {
+public class Top001_simple {
 
 
     /**
@@ -31,7 +31,7 @@ public class Top001 {
 
     public static void main(String[] args) {
         // 测试入口
-        Top001 top001 = new Top001();
+        Top001_simple top001 = new Top001_simple();
         int[] nums = {2,7,11,15};
         int target = 9;
         int[] ints = top001.twoSum(nums, target);

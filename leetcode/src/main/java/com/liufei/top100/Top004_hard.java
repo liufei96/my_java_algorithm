@@ -1,6 +1,6 @@
 package com.liufei.top100;
 
-public class Top004 {
+public class Top004_hard {
 
 
     public static void main(String[] args) {

@@ -32,7 +32,7 @@ import java.util.Set;
  * 0 <= s.length <= 5 * 104
  * s 由英文字母、数字、符号和空格组成
  */
-public class Top003 {
+public class Top003_middle {
 
 
     public static void main(String[] args) {
