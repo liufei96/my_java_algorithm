@@ -2,7 +2,7 @@ package com.liufei.top100;
 
 import java.util.Stack;
 
-public class Top002 {
+public class Top002_middle {
 
     /**
      * 给你两个非空 的链表，表示两个非负的整数。它们每位数字都是按照逆序的方式存储的，并且每个节点只能存储一位数字。
@@ -36,7 +36,7 @@ public class Top002 {
      */
 
     public static void main(String[] args) {
-        Top002 top002 = new Top002();
+        Top002_middle top002 = new Top002_middle();
 //        int[] num1 = new int[] { 9,9,9,9,9,9,9 };
 //        int[] num2 = new int[] { 9,9,9,9 };
 //        ListNode listNode1 = top002.arrayToListNode(num1);
