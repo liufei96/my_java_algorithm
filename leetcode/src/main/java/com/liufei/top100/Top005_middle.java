@@ -131,9 +131,12 @@ public class Top005_middle {
     public String longestPalindrome3(String s) {
         int begin = 0, end = 0;
         for (int i = 0; i < s.length(); i++) {
+            // 当回文串是奇数时，由一个中心点向两边扩散
             int len1 = expandAroundCenter(s, i, i);
+            // 当回文串是偶数时，由中间的两个中心点向两边扩散
             int len2 = expandAroundCenter(s, i, i + 1);
             int len = Math.max(len1, len2);
+            // 计算对应最大回文子串的起点和终点
             if (len > end - begin) {
                 begin = i - (len - 1) / 2;
                 end = i + len / 2;
@@ -142,6 +145,13 @@ public class Top005_middle {
         return s.substring(begin, end  + 1);
     }
 
+    /**
+     * 辅助函数：寻找回文数
+     * @param s
+     * @param left
+     * @param right
+     * @return
+     */
     public int expandAroundCenter(String s, int left, int right) {
         while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
             --left;
