@@ -3,6 +3,8 @@ package com.liufei.top100;
 import java.util.Scanner;
 
 /**
+ * 正则表达式匹配 [ https://leetcode-cn.com/problems/regular-expression-matching/ ]
+ *
  * 给你一个字符串 s 和一个字符规律 p，请你来实现一个支持 '.' 和 '*' 的正则表达式匹配。
  * '.' 匹配任意单个字符
  * '*' 匹配零个或多个前面的那一个元素
@@ -36,6 +38,7 @@ import java.util.Scanner;
 public class Top010_hard {
 
     public static void main(String[] args) {
+        // TODO
         Scanner scanner = new Scanner(System.in);
         int num = scanner.nextInt();
     }

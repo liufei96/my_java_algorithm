@@ -7,6 +7,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
+ * 字符串转换整数 (atoi) [ https://leetcode-cn.com/problems/string-to-integer-atoi/ ]
+ *
  * 请你来实现一个myAtoi(string s)函数，使其能将字符串转换成一个 32 位有符号整数（类似 C/C++ 中的 atoi 函数）。
  *
  * 函数myAtoi(string s) 的算法如下：

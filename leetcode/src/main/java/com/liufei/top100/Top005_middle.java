@@ -3,6 +3,8 @@ package com.liufei.top100;
 import java.util.Scanner;
 
 /**
+ * 最长回文数。 [ https://leetcode-cn.com/problems/longest-palindromic-substring/ ]
+ *
  * 给你一个字符串 s，找到 s 中最长的回文子串。【回文的意思是正着念和倒着念一样】
  * <p>
  * 示例 1：
