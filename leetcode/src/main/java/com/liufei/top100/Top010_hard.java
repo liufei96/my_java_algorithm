@@ -44,9 +44,29 @@ public class Top010_hard {
     }
 
 
-
     public boolean isMatch(String s, String p) {
+        int sLen = s.length();
+        int pLen = p.length();
+        if (sLen == pLen && pLen == 0) return true;
+
+        boolean[][] dp = new boolean[sLen+1][pLen+1];
+        //dp[i][j]表示s的0到i-1和p的0到j-1是否匹配
+        dp[0][0] = true;
+
+        // 初始化s=    0
+        for (int j = 0; j <= pLen ; j++) {
+            //当s为空时，a*b*c*可以匹配
+            //当判断到下标j-1是*，j-2是b，b对应f，要看之前的能否匹配
+            //比如a*b*下标依次为ftft，b之前的位t，所以j-1也是true
+            //即dp[0][j]对应的下标j-1位true
+
+        }
 
         return false;
+    }
+
+
+    public boolean isMatch2(String s, String p) {
+        return s.matches(p);
     }
 }
