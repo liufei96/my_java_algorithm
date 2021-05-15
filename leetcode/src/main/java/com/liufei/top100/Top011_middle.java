@@ -31,4 +31,24 @@ package com.liufei.top100;
  *
  */
 public class Top011_middle {
+
+    public static void main(String[] args) {
+        Top011_middle top11 = new Top011_middle();
+        int[] height = { 4,3,2,1,4};
+        int result = top11.maxArea(height);
+        System.out.println(result);
+    }
+
+
+    public int maxArea(int[] height) {
+        int result = height[0];
+        int len = height.length;
+        for (int i = 0; i < len - 1; i++) {
+            for (int j = i + 1; j < len; j++) {
+                int min = Math.min(height[i], height[j]);
+                result = Math.max(result, (j - i) * min);
+            }
+        }
+        return result;
+    }
 }
