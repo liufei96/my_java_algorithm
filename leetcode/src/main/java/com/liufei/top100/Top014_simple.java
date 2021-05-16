@@ -15,7 +15,7 @@ package com.liufei.top100;
  * 输出：""
  * 解释：输入不存在公共前缀。
  */
-public class Top14_simple {
+public class Top014_simple {
 
     public static void main(String[] args) {
         String[] str = { "flower","flow","flight" };

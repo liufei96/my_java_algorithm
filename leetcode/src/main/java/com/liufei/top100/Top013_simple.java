@@ -57,7 +57,7 @@ import java.util.Scanner;
  *
  *
  */
-public class Top13_simple {
+public class Top013_simple {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
