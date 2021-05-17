@@ -1,5 +1,7 @@
 package com.liufei.top100;
 
+import com.sun.jmx.remote.internal.ArrayQueue;
+
 import java.util.*;
 
 /**
@@ -44,7 +46,7 @@ public class Top017_middle {
         Top017_middle top17 = new Top017_middle();
         Scanner scanner = new Scanner(System.in);
         String digits = scanner.nextLine();
-        List<String> res = top17.letterCombinations2(digits);
+        List<String> res = top17.letterCombinations3(digits);
         System.out.println(res);
         System.out.println(res.size());
     }
@@ -143,7 +145,47 @@ public class Top017_middle {
 
     /**
      * 广度优先算法。广度优先算法，需要使用队列
-     *
+     * <p>
      * 先讲abc添加到队列中，然后依次取出，在添加
      */
+    public List<String> letterCombinations3(String digits) {
+        List<String> combinations = new ArrayList<>();
+        if (digits.length() == 0) {
+            return combinations;
+        }
+        Map<Character, String[]> phoneMap = new HashMap<Character, String[]>() {{
+            put('2', new String[]{"a", "b", "c"});
+            put('3', new String[]{"d", "e", "f"});
+            put('4', new String[]{"g", "h", "i"});
+            put('5', new String[]{"j", "k", "l"});
+            put('6', new String[]{"m", "n", "o"});
+            put('7', new String[]{"p", "q", "r", "s"});
+            put('8', new String[]{"t", "u", "v"});
+            put('9', new String[]{"w", "x", "y", "z"});
+        }};
+        int len = digits.length();
+        Queue<String> queue = new LinkedList<>();
+        for (int i = 0; i < len; i++) {
+            if (i == 0) {
+                String[] strings = phoneMap.get(digits.charAt(i));
+                for (String str : strings) {
+                    queue.offer(str);
+                }
+            } else {
+                int size = queue.size();
+                while (size > 0) {
+                    String poll = queue.poll();
+                    String[] strings = phoneMap.get(digits.charAt(i));
+                    for (String str : strings) {
+                        queue.offer(poll + str);
+                    }
+                    size--;
+                }
+            }
+        }
+        combinations.addAll(queue);
+        return combinations;
+    }
+
+
 }
