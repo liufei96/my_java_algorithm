@@ -1,5 +1,7 @@
 package com.liufei.top100;
 
+import com.liufei.model.ListNode;
+
 import java.util.Deque;
 import java.util.LinkedList;
 
@@ -57,6 +59,15 @@ public class Top019_middle {
         cur.next = cur.next.next;
         return node.next;
     }
+    public int getLength(ListNode head) {
+        int len = 1;
+        while (head.next != null) {
+            len++;
+            head = head.next;
+        }
+        return len;
+    }
+
 
 
     /**
@@ -84,20 +95,11 @@ public class Top019_middle {
         return dummy.next;
     }
 
-    public int getLength(ListNode head) {
-        int len = 1;
-        while (head.next != null) {
-            len++;
-            head = head.next;
-        }
-        return len;
-    }
 
 
     public ListNode removeNthFromEnd(ListNode head, int n) {
         return removeNode(head, n) == n ? head.next : head;
     }
-
     /**
      * 递归，return计数法
      *
@@ -146,31 +148,6 @@ public class Top019_middle {
         return p.next;
     }
 
-
-    static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode() {
-        }
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-
-        @Override
-        public String toString() {
-            return "ListNode{" +
-                    "val=" + val +
-                    ", next=" + next +
-                    '}';
-        }
-    }
 }
 
 

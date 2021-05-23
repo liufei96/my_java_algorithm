@@ -1,5 +1,7 @@
 package com.liufei.top100;
 
+import com.liufei.model.ListNode;
+
 import java.util.Stack;
 
 /**
@@ -57,9 +59,9 @@ public class Top002_middle {
         System.out.println(28 % 10);
     }
 
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode listNode = new ListNode();
-        ListNode next = listNode;
+    public com.liufei.model.ListNode addTwoNumbers(com.liufei.model.ListNode l1, com.liufei.model.ListNode l2) {
+        com.liufei.model.ListNode listNode = new com.liufei.model.ListNode();
+        com.liufei.model.ListNode next = listNode;
         int remainder = 0;
         while (l1 != null || l2 != null) {
             int sum = l1.val + l2.val + remainder;
@@ -77,10 +79,10 @@ public class Top002_middle {
      * @param listNode
      * @return
      */
-    public StringBuilder addListNodeValToStringBuilder(ListNode listNode) {
+    public StringBuilder addListNodeValToStringBuilder(com.liufei.model.ListNode listNode) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(listNode.val);
-        ListNode next1 = listNode.next;
+        com.liufei.model.ListNode next1 = listNode.next;
         while (next1 != null) {
             stringBuilder.append(next1.val);
             next1 = next1.next;
@@ -93,11 +95,11 @@ public class Top002_middle {
      * @param nums
      */
     public ListNode arrayToListNode(int[] nums) {
-        ListNode listNode = new ListNode();
+        com.liufei.model.ListNode listNode = new com.liufei.model.ListNode();
         if (nums == null || nums.length == 0) {
             return null;
         }
-        ListNode next = listNode;
+        com.liufei.model.ListNode next = listNode;
         for (int i = 0; i < nums.length; i++) {
             next.val = nums[i];
             if (i < nums.length - 1) {
@@ -106,22 +108,5 @@ public class Top002_middle {
             }
         }
         return listNode;
-    }
-}
-
-class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode() {
-    }
-
-    ListNode(int val) {
-        this.val = val;
-    }
-
-    ListNode(int val, ListNode next) {
-        this.val = val;
-        this.next = next;
     }
 }
