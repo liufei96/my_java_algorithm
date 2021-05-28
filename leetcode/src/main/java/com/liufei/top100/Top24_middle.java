@@ -24,14 +24,16 @@ public class Top24_middle {
 
     public static void main(String[] args) {
         Top24_middle top24 = new Top24_middle();
-        ListNode listNode = new ListNode(1, new ListNode(2, new ListNode(3)));
-        ListNode listNode1 = top24.swapPairs(listNode);
+        ListNode listNode = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4))));
+        ListNode listNode1 = top24.swapPairs2(listNode);
         System.out.println(listNode1);
     }
 
 
     /**
      * 递归法
+     * 时间复杂度：O(n)
+     * 空间复杂度：O(n)
      * @param head
      * @return
      */
@@ -45,13 +47,25 @@ public class Top24_middle {
         return next;
     }
 
+    /**
+     * 迭代法
+     * 时间复杂度：O(n)，其中 nn 是链表的节点数量。需要对每个节点进行更新指针的操作。
+     * 空间复杂度：O(1)。
+     * @param head
+     * @return
+     */
     public ListNode swapPairs2(ListNode head) {
-        if (head == null || head.next == null) {
-            return head;
+        ListNode dummyHead = new ListNode(0);
+        dummyHead.next = head;
+        ListNode tmp = dummyHead;
+        while (tmp.next != null && tmp.next.next != null) {
+            ListNode node1 = tmp.next;
+            ListNode node2 = tmp.next.next;
+            tmp.next = node2;
+            node1.next = node2.next;
+            node2.next = node1;
+            tmp = node1;
         }
-        ListNode next = head.next;
-        head.next = swapPairs(next.next);
-        next.next = head;
-        return next;
+        return dummyHead.next;
     }
 }
