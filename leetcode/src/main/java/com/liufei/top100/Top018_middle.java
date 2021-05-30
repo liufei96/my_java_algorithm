@@ -31,6 +31,15 @@ public class Top018_middle {
     }
 
 
+    /**
+     * 排序加双指针
+     * 时间复杂度：时间复杂度：O(n^3)，其中 nn 是数组的长度。排序的时间复杂度是 O(nlogn)，枚举四元组的时间复杂度是 O(n^3)，
+     * 因此总时间复杂度为 O(n^3+n\log n)=O(n^3)
+     * 空间复杂度：O(logn)
+     * @param nums
+     * @param target
+     * @return
+     */
     public List<List<Integer>> fourSum(int[] nums, int target) {
         List<List<Integer>> result = new ArrayList<>();
         int len = nums.length;
@@ -39,18 +48,14 @@ public class Top018_middle {
         }
         // 排序
         Arrays.sort(nums);
-        int preI = Integer.MAX_VALUE;
         for (int i = 0; i < len - 3; i++) {
-            if (nums[i] == preI) {
+            if (i > 0 && nums[i] == nums[i - 1]) {
                 continue;
             }
-            preI = nums[i];
-            int preJ = Integer.MAX_VALUE;
             for (int j = i + 1; j < len - 2; j++) {
-                if (nums[j] == preJ) {
+                if (j > i + 1 && nums[j] == nums[j - 1]) {
                     continue;
                 }
-                preJ = nums[j];
                 // 双指针移动
                 List<List<Integer>> list = new ArrayList<>();
                 int newTarget = target - nums[i] - nums[j];
@@ -70,16 +75,19 @@ public class Top018_middle {
     }
 
     private void findTwoSumTarget(int l, int r, int[] nums, int target, List<List<Integer>> lists) {
-        // 去重
-        int right = Integer.MAX_VALUE;
         while (l < r) {
             if (nums[l] + nums[r] == target) {
-                if (nums[r] != right) {
-                    lists.add(new ArrayList<>(Arrays.asList(nums[l], nums[r])));
-                    right = nums[r];
+                lists.add(new ArrayList<>(Arrays.asList(nums[l], nums[r])));
+                // 去重
+                while (l < r && nums[l] == nums[l + 1]) {
+                    l++;
+                }
+                l++;
+                // 去重
+                while (l < r && nums[r] == nums[r - 1]) {
+                    r--;
                 }
                 r--;
-                l++;
             } else if (nums[l] + nums[r] > target) {
                 r--;
             } else {
@@ -87,4 +95,8 @@ public class Top018_middle {
             }
         }
     }
+
+    /**
+     * 暴力法。四重循环，在使用一个集合判断元素是否重复
+     */
 }
