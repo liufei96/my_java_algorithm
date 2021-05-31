@@ -42,11 +42,11 @@ import java.util.*;
  * 1 <= s.length <= 104
  * s 仅由括号 '()[]{}' 组成
  */
-public class Top20_simple {
+public class Top020_simple {
 
 
     public static void main(String[] args) {
-        Top20_simple top20 = new Top20_simple();
+        Top020_simple top20 = new Top020_simple();
         String s = "{[]}";
         boolean valid = top20.isValid2(s);
         System.out.println(valid);

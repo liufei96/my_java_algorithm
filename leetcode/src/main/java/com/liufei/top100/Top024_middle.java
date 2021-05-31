@@ -20,10 +20,10 @@ import com.liufei.model.ListNode;
  * 输入：head = [1]
  * 输出：[1]
  */
-public class Top24_middle {
+public class Top024_middle {
 
     public static void main(String[] args) {
-        Top24_middle top24 = new Top24_middle();
+        Top024_middle top24 = new Top024_middle();
         ListNode listNode = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4))));
         ListNode listNode1 = top24.swapPairs2(listNode);
         System.out.println(listNode1);

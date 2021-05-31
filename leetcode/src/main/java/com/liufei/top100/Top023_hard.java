@@ -30,10 +30,10 @@ import com.liufei.model.ListNode;
  * 输入：lists = [[]]
  * 输出：[]
  */
-public class Top23_hard {
+public class Top023_hard {
 
     public static void main(String[] args) {
-        Top23_hard top23 = new Top23_hard();
+        Top023_hard top23 = new Top023_hard();
         ListNode[] listNodes = {
                 new ListNode(1, new ListNode(4, new ListNode(5))),
                 new ListNode(1, new ListNode(3, new ListNode(4))),

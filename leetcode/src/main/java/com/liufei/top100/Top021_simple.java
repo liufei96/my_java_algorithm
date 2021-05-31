@@ -19,10 +19,10 @@ import com.liufei.model.ListNode;
  * 输入：l1 = [], l2 = [0]
  * 输出：[0]
  */
-public class Top21_simple {
+public class Top021_simple {
 
     public static void main(String[] args) {
-        Top21_simple top21 = new Top21_simple();
+        Top021_simple top21 = new Top021_simple();
         ListNode l1 = new ListNode(1, new ListNode(2, new ListNode(4)));
         ListNode l2 = new ListNode(1, new ListNode(3, new ListNode(4)));
         ListNode listNode = top21.mergeTwoLists(l1, l2);

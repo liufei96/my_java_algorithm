@@ -1,42 +1,41 @@
 package com.liufei.top100;
 
-import org.omg.CORBA.PUBLIC_MEMBER;
-
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * 22. 括号生成  [ https://leetcode-cn.com/problems/generate-parentheses/ ]
- *
+ * <p>
  * 数字 n 代表生成括号的对数，请你设计一个函数，用于能够生成所有可能的并且 有效的 括号组合。
- *
+ * <p>
  * 示例 1：
- *
+ * <p>
  * 输入：n = 3
  * 输出：["((()))","(()())","(())()","()(())","()()()"]
- *
+ * <p>
  * 示例 2：
- *
+ * <p>
  * 输入：n = 1
  * 输出：["()"]
- *
+ * <p>
  * 提示：
  * 1 <= n <= 8
  */
-public class Top22_middle {
+public class Top022_middle {
 
     public static void main(String[] args) {
-        Top22_middle top22 = new Top22_middle();
+        Top022_middle top22 = new Top022_middle();
         List<String> strings = top22.generateParenthesis2(3);
         System.out.println(strings);
     }
 
     /**
      * 暴力法
-     *
+     * <p>
      * 时间复杂度：O(2^{2n}n)O(2) 对于 2^{2n}2
      * 个序列中的每一个，我们用于建立和验证该序列的复杂度为 O(n)O(n)。
      * *
+     *
      * @return
      */
     public List<String> generateParenthesis(int n) {
@@ -47,21 +46,21 @@ public class Top22_middle {
 
 
     public void generateAll(char[] current, int pos, List<String> result) {
-       if (pos == current.length) {
-           if (valid(current)) {
-               result.add(new String(current));
-           }
-       } else {
-           current[pos] = '(';
-           generateAll(current, pos + 1, result);
-           current[pos] = ')';
-           generateAll(current, pos + 1, result);
-       }
+        if (pos == current.length) {
+            if (valid(current)) {
+                result.add(new String(current));
+            }
+        } else {
+            current[pos] = '(';
+            generateAll(current, pos + 1, result);
+            current[pos] = ')';
+            generateAll(current, pos + 1, result);
+        }
     }
 
     public boolean valid(char[] current) {
         int balance = 0;
-        for (char c: current) {
+        for (char c : current) {
             if ('(' == c) {
                 balance++;
             } else if (')' == c) {
