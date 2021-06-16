@@ -35,8 +35,8 @@ public class Top028_simple {
     public static void main(String[] args) {
         Top028_simple top028 = new Top028_simple();
         String haystack = "hello";
-        String needle = "aabaaab";
-        int result = top028.strStr2(haystack, needle);
+        String needle = "llo";
+        int result = top028.strStr3(haystack, needle);
         System.out.println(result);
     }
 
@@ -91,5 +91,27 @@ public class Top028_simple {
             }
         }
         return -1;
+    }
+
+    /**
+     * 双指针
+     * @param haystack
+     * @param needle
+     * @return
+     */
+    public int strStr3(String haystack, String needle) {
+        if (needle.length() == 0) return 0;
+        int left = 0, right = 0, index = 0;
+        while (right < haystack.length() && index < needle.length()) {
+            if (haystack.charAt(right) != needle.charAt(index)) {
+                left++;
+                right = left;
+                index = 0;
+            } else {
+                right++;
+                index++;
+            }
+        }
+        return index == needle.length() ? left : -1;
     }
 }

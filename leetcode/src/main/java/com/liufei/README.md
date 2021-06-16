@@ -28,3 +28,5 @@
 |25 | K 个一组翻转链表 | 困难 | [https://leetcode-cn.com/problems/reverse-nodes-in-k-group/](https://leetcode-cn.com/problems/reverse-nodes-in-k-group/) | 链表 |
 |26 | 删除有序数组中的重复项 | 简单 | [https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/) | 数组 |
 |27 | 移除元素 | 简单 | [https://leetcode-cn.com/problems/remove-element/](https://leetcode-cn.com/problems/remove-element/) | 数组 |
+|28 | 实现 strStr() | 简单 | [https://leetcode-cn.com/problems/implement-strstr/](https://leetcode-cn.com/problems/implement-strstr/) | 字符串 |
+|29 | 两数相除 | 中等 | [https://leetcode-cn.com/problems/divide-two-integers/](https://leetcode-cn.com/problems/divide-two-integers/) | 除法 |
