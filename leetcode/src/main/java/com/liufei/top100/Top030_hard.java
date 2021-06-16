@@ -1,7 +1,9 @@
 package com.liufei.top100;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 30. 串联所有单词的子串 [ https://leetcode-cn.com/problems/substring-with-concatenation-of-all-words/ ]
@@ -34,15 +36,45 @@ public class Top030_hard {
     public static void main(String[] args) {
         Top030_hard top030 = new Top030_hard();
         String s = "barfoofoobarthefoobarman";
-        String[] words = { "bar","foo","the" };
+        String[] words = { "bar","foo","the", " bar" };
         List<Integer> substring = top030.findSubstring(s, words);
         System.out.println(substring);
     }
 
-
-
     public List<Integer> findSubstring(String s, String[] words) {
-
-        return new ArrayList<>();
+        List<Integer> res = new ArrayList<>();
+        int firstWordLen = words[0].length();
+        int allWordLen = firstWordLen * words.length;
+        if (s.length() < allWordLen) {
+            return res;
+        }
+        Map<String,Integer> map = new HashMap<>();
+        for(String word: words) {
+            map.put(word, map.getOrDefault(word, 0) + 1);
+        }
+        for (int i = 0; i < firstWordLen; i++) {
+            int left = i, right = i, count = 0;
+            HashMap<String, Integer> tmp_map = new HashMap<>();
+            while (right + firstWordLen <= s.length()) {
+                String w = s.substring(right, right + firstWordLen);
+                right += firstWordLen;
+                if (!map.containsKey(w)) {
+                    count = 0;
+                    left = right;
+                    tmp_map.clear();
+                } else {
+                    tmp_map.put(w, tmp_map.getOrDefault(w, 0) + 1);
+                    count++;
+                    while (tmp_map.get(w) > map.get(w)) {
+                        String t_w = s.substring(left, left + firstWordLen);
+                        count--;
+                        tmp_map.put(t_w, tmp_map.getOrDefault(t_w, 0) - 1);
+                        left += firstWordLen;
+                    }
+                    if (count == words.length) res.add(left);
+                }
+            }
+        }
+        return res;
     }
 }
