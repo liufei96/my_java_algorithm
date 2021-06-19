@@ -30,3 +30,5 @@
 |27 | 移除元素 | 简单 | [https://leetcode-cn.com/problems/remove-element/](https://leetcode-cn.com/problems/remove-element/) | 数组 |
 |28 | 实现 strStr() | 简单 | [https://leetcode-cn.com/problems/implement-strstr/](https://leetcode-cn.com/problems/implement-strstr/) | 字符串 |
 |29 | 两数相除 | 中等 | [https://leetcode-cn.com/problems/divide-two-integers/](https://leetcode-cn.com/problems/divide-two-integers/) | 除法 |
+|30 | 串联所有单词的子串 | 困难 | [https://leetcode-cn.com/problems/substring-with-concatenation-of-all-words/](https://leetcode-cn.com/problems/substring-with-concatenation-of-all-words/) | 数组 字符串 |
+|31 | 下一个排列 | 中等 | [https://leetcode-cn.com/problems/next-permutation/](https://leetcode-cn.com/problems/next-permutation/) | 数组 |
