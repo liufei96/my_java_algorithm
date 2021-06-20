@@ -32,3 +32,7 @@
 |29 | 两数相除 | 中等 | [https://leetcode-cn.com/problems/divide-two-integers/](https://leetcode-cn.com/problems/divide-two-integers/) | 除法 |
 |30 | 串联所有单词的子串 | 困难 | [https://leetcode-cn.com/problems/substring-with-concatenation-of-all-words/](https://leetcode-cn.com/problems/substring-with-concatenation-of-all-words/) | 数组 字符串 |
 |31 | 下一个排列 | 中等 | [https://leetcode-cn.com/problems/next-permutation/](https://leetcode-cn.com/problems/next-permutation/) | 数组 |
+|32 | 最长有效括号 | 困难 | [https://leetcode-cn.com/problems/longest-valid-parentheses/](https://leetcode-cn.com/problems/longest-valid-parentheses/) | 字符串 |
+|33 | 搜索旋转排序数组 | 中等 | [https://leetcode-cn.com/problems/search-in-rotated-sorted-array/](https://leetcode-cn.com/problems/search-in-rotated-sorted-array/) | 数组 |
+|34 | 在排序数组中查找元素的第一个和最后一个位置 | 中等 | [https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/](https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/) | 数组 |
+
