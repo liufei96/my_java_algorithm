@@ -27,3 +27,9 @@ def backtrack(路径, 选择列表):
 **其核心就是 for 循环里面的递归，在递归调用之前「做选择」，在递归调用之后「撤销选择」，特别简单。**
 
 什么叫做选择和撤销选择呢，这个框架的底层原理是什么呢？下面我们就通过「全排列」这个问题来解开之前的疑惑，详细探究一下其中的奥妙！
+
+
+# 练习
+46. 全排列 [ https://leetcode-cn.com/problems/permutations/ ]
+51. N 皇后  [ https://leetcode-cn.com/problems/n-queens/ ]
+52. N皇后 II [ https://leetcode-cn.com/problems/n-queens-ii/ ]

@@ -1,7 +1,6 @@
 package com.liufei.top100;
 
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * 52. N皇后 II [ https://leetcode-cn.com/problems/n-queens-ii/ ]
