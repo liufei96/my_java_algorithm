@@ -1,11 +1,32 @@
 package com.liufei.swordFinger;
 
 /**
- * 剑指Office第二题：跳台阶问题
+ * 剑指 Offer 10- II. 青蛙跳台阶问题  [ https://leetcode-cn.com/problems/qing-wa-tiao-tai-jie-wen-ti-lcof/ ]
  * <p>
  * 一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法。
+ *
+ * 一只青蛙一次可以跳上1级台阶，也可以跳上2级台阶。求该青蛙跳上一个 n级的台阶总共有多少种跳法。
+ *
+ * 答案需要取模 1e9+7（1000000007），如计算初始结果为：1000000008，请返回 1。
+ *
+ * 示例 1：
+ *
+ * 输入：n = 2
+ * 输出：2
+ * 示例 2：
+ *
+ * 输入：n = 7
+ * 输出：21
+ * 示例 3：
+ *
+ * 输入：n = 0
+ * 输出：1
+ * 提示：
+ *
+ * 0 <= n <= 100
+ *
  */
-public class Algorithm_002 {
+public class Algorithm_010_II {
 
     /**
      * 问题分析：
@@ -21,9 +42,9 @@ public class Algorithm_002 {
      */
 
     public static void main(String[] args) {
-        Algorithm_002 algorithm_002 = new Algorithm_002();
+        Algorithm_010_II algorithm_010II = new Algorithm_010_II();
         int n = 44;
-        int res = algorithm_002.jumpFloor(n);
+        int res = algorithm_010II.jumpFloor(n);
         System.out.println(res);
     }
 
