@@ -1,36 +1,89 @@
 package com.liufei.swordFinger;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
- * 剑指Office第三题：变态跳台阶问题
+ * 剑指 Offer 03. 数组中重复的数字 [ https://leetcode-cn.com/problems/shu-zu-zhong-zhong-fu-de-shu-zi-lcof/ ]
  * <p>
- * 一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法。
+ * 找出数组中重复的数字。
  * <p>
- * 假设n>=2，第一步有n种跳法：跳1级、跳2级、到跳n级 跳1级，剩下n-1级，则剩下跳法是f(n-1) 跳2级，剩下n-2级，则剩下跳法是f(n-2) ...... 跳n-1级，剩下1级，
- * 则剩下跳法是f(1) 跳n级，剩下0级，则剩下跳法是f(0) 所以在n>=2的情况下：
- * f(n)=f(n-1)+f(n-2)+...+f(1) 因为f(n-1)=f(n-2)+f(n-3)+...+f(1) 所以f(n)=2*f(n-1) 又f(1)=1,所以可得f(n)=2^(number-1)
+ * 在一个长度为 n 的数组 nums 里的所有数字都在 0～n-1 的范围内。数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了几次。请找出数组中任意一个重复的数字。
+ * <p>
+ * 示例 1：
+ * <p>
+ * 输入：
+ * [2, 3, 1, 0, 2, 5, 3]
+ * 输出：2 或 3
  */
 public class Algorithm_003 {
 
     public static void main(String[] args) {
         Algorithm_003 algorithm003 = new Algorithm_003();
-        int n = 10;
-        int res = algorithm003.JumpFloorII(n);
-        System.out.println(res);
+        int[] nums = {2, 3, 1, 0, 2, 5, 3};
+        int repeatNumber = algorithm003.findRepeatNumber(nums);
+        System.out.println(repeatNumber);
+
+        System.out.println(algorithm003.findRepeatNumber2(nums));
+
+        System.out.println(algorithm003.findRepeatNumber3(nums));
     }
 
     /**
-     * 补充：
-     * java中有三种移位运算符：
-     *
-     * “<<” : 左移运算符，等同于乘2的n次方
-     * “>>”: 右移运算符，等同于除2的n次方
-     * “>>>” 无符号右移运算符，不管移动前最高位是0还是1，右移后左侧产生的空位部分都以0来填充。与>>类似。
-     * 例： int a = 16; int b = a << 2;//左移2，等同于16 * 2的2次方，也就是16 * 4 int c = a >> 2;//右移2，等同于16 / 2的2次方，也就是16 / 4
-     *
-     * @param number
+     * [ 速度最快 ]
+     * @param nums
      * @return
      */
-    int JumpFloorII(int number) {
-        return 1 << --number;//2^(number-1)用位移操作进行，更快
+    public int findRepeatNumber(int[] nums) {
+        Set<Integer> set = new HashSet<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (set.contains(nums[i])) {
+                return nums[i];
+            }
+            set.add(nums[i]);
+        }
+        return -1;
+    }
+
+    /**
+     * 排序，排序之和，只需要比较相邻的两个元素即可
+     *
+     * @param nums
+     * @return
+     */
+    public int findRepeatNumber2(int[] nums) {
+        Arrays.sort(nums);
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] == nums[i - 1]) {
+                return nums[i];
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * 一般想不到的：原地置换，将原数组作为哈希表  [ 速度最快 ]
+     * <p>
+     * 长度为 n 的数组 nums 里的所有数字都在 0～n-1 的范围内,这样一来,本来这个数组就可以作为一个哈希表,但是其中有某几个元素捣乱了.
+     * <p>
+     * 那么，对于这个乱序的数组，从头开始遍历，每当遍历到一个数字 nums[i] ,如果他不等于i, (也就是他并不在自己应该在的哈希表的位置).
+     * 我们就把他放到应该在的位置去,也就是把他和 nums[nums[i]] 进行交换．
+     *
+     * @param nums
+     * @return
+     */
+    public int findRepeatNumber3(int[] nums) {
+        for (int i = 0; i < nums.length; i++) {
+           while (i != nums[i]) {
+               if (nums[i] == nums[nums[i]]) {
+                   return nums[i];
+               }
+               int tmp = nums[i];
+               nums[i] = nums[tmp];
+               nums[tmp] = tmp;
+           }
+        }
+        return -1;
     }
 }
