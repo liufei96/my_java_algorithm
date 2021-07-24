@@ -8,8 +8,15 @@ public class TreeNode {
 
     TreeNode right;
 
-    TreeNode(int x) { val = x; }
+    TreeNode(int x) {
+        val = x;
+    }
 
+    TreeNode(int x, TreeNode left, TreeNode right) {
+        val = x;
+        this.left = left;
+        this.right = right;
+    }
 
     @Override
     public String toString() {
