@@ -55,6 +55,11 @@ public class Top038_middle {
         System.out.println(top038_middle.countAndSay2(n));
     }
 
+    /**
+     * 方法一：正常解法
+     * @param n
+     * @return
+     */
     public String countAndSay(int n) {
         if (n == 1) return "1";
         String res = "1";
@@ -79,6 +84,11 @@ public class Top038_middle {
         return res;
     }
 
+    /***
+     * 方法二：打表
+     * @param n
+     * @return
+     */
     public String countAndSay2(int n) {
         String[] res = {
                 "1",
