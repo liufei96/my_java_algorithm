@@ -30,12 +30,17 @@ public class Top037_hard {
                 {'.', '.', '.', '.', '8', '.', '.', '7', '9'}
         };
         top037.solveSudoku(board);
-        System.out.println(Arrays.toString(board));
+        for (int i = 0; i < board.length; i++) {
+            System.out.println(Arrays.toString(board[i]));
+        }
     }
 
     public void solveSudoku(char[][] board) {
+        // 存储每一行出现过得数字
         boolean[][] row = new boolean[9][9];
+        // 存储每一列出现过的是数字
         boolean[][] col = new boolean[9][9];
+        // 存储每一个 3 * 3宫存在的数字
         boolean[][] block = new boolean[9][9];
 
         for (int i = 0; i < 9; i++) {
@@ -44,7 +49,6 @@ public class Top037_hard {
                     int num = board[i][j] - '1';
                     row[i][num] = true;
                     col[j][num] = true;
-                    // blockIndex = i / 3 * 3 + j / 3，取整
                     int blockIndex = i / 3 * 3 + j / 3;
                     block[blockIndex][num] = true;
                 }
