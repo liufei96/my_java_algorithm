@@ -30,9 +30,9 @@ public class Top041_hard {
 
     public static void main(String[] args) {
         Top041_hard top041Hard = new Top041_hard();
-        int[] nums = {7, 8, 9, 11, 12};
-        int res = top041Hard.firstMissingPositive(nums);
-        System.out.println(res);
+        int[] nums = {1,2,0};
+//        int res = top041Hard.firstMissingPositive(nums);
+//        System.out.println(res);
 
         System.out.println(top041Hard.firstMissingPositive2(nums));
     }
