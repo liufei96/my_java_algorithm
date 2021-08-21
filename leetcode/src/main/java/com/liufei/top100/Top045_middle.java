@@ -22,7 +22,7 @@ package com.liufei.top100;
  * 输入: nums = [2,3,0,1,4]
  * 输出: 2
  *
- *
+ * 相似题目：跳跃I （55题  https://leetcode-cn.com/problems/jump-game/）
  */
 public class Top045_middle {
 
