@@ -37,6 +37,19 @@ public class Top055_middle {
         System.out.println(res);
     }
 
+    /**
+     * 方法一：贪心
+     *
+     * 我们可以用贪心的方法解决这个问题。
+     *
+     * 设想一下，对于数组中的任意一个位置 yy，我们如何判断它是否可以到达？根据题目的描述，只要存在一个位置 xx，它本身可以到达，
+     * 并且它跳跃的最大长度为 x+nums[x]，这个值大于等于 yy，即 x+nums[x] ≥ y，那么位置 yy 也可以到达。
+     *
+     * 换句话说，对于每一个可以到达的位置 xx，它使得 x+1,x+2,⋯,x+nums[x] 这些连续的位置都可以到达。
+     *
+     * @param nums
+     * @return
+     */
     public boolean canJump(int[] nums) {
         int n = nums.length - 1;
         int maxPosition = n;
