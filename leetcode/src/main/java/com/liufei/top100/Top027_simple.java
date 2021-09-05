@@ -72,7 +72,7 @@ public class Top027_simple {
      * @return
      */
     public int removeElement(int[] nums, int val) {
-        int len = nums.length;;
+        int len = nums.length;
         int slowIndex = 0;
         for (int fastIndex = 0; fastIndex < len; fastIndex++) {
             if (nums[fastIndex] != val) {

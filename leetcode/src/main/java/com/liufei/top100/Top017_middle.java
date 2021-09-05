@@ -137,7 +137,7 @@ public class Top017_middle {
             for (int i = 0; i < letterLen; i++) {
                 combination.append(letters.charAt(i));
                 backtrack(combinations, phoneMap, digits, index + 1, combination);
-                System.out.println(combination.toString());
+                System.out.println(combination);
                 combination.deleteCharAt(index);
             }
         }

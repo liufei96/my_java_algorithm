@@ -56,7 +56,6 @@ public class Top023_hard {
     public ListNode mergeKLists(ListNode[] lists) {
         ListNode ans = null;
         int len = lists.length;
-        ;
         for (int i = 0; i < len; i++) {
             ans = mergeTwoLists(ans, lists[i]);
         }
