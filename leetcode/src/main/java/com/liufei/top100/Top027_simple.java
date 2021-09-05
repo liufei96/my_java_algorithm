@@ -56,25 +56,36 @@ public class Top027_simple {
         int val = 2;
         int result = top027.removeElement2(nums, val);
         System.out.println(result);
+        int[] nums2 = {0, 1, 2, 2, 3, 0, 4, 2};
+        System.out.println(top027.removeElement2(nums2, val));
+        int[] nums3 = {0, 1, 2, 2, 3, 0, 4, 2};
+        System.out.println(top027.removeElement3(nums3, val));
     }
 
+
+    /**
+     * 快慢指针
+     * 时间复杂度：O(n)
+     * 空间复杂度：O(1)
+     * @param nums
+     * @param val
+     * @return
+     */
     public int removeElement(int[] nums, int val) {
-        int len = nums.length;
-        if (len == 0) return 0;
-        int left = 0;
-        for (int i = 0; i < len; i++) {
-            if (nums[i] != val) {
-                nums[left] = nums[i];
-                left++;
+        int len = nums.length;;
+        int slowIndex = 0;
+        for (int fastIndex = 0; fastIndex < len; fastIndex++) {
+            if (nums[fastIndex] != val) {
+                nums[slowIndex++] = nums[fastIndex];
             }
         }
-        return left;
+        return slowIndex;
     }
 
 
     /**
      * 优化
-     * 如果要移除的元素恰好在数组的开头，例如序列 [1,2,3,4,5][1,2,3,4,5]，当 val 为 1 时，
+     * 如果要移除的元素恰好在数组的开头，例如序列 [1,2,3,4,5]，当 val 为 1 时，
      * 我们需要把每一个元素都左移一位。注意到题目中说：「元素的顺序可以改变」。
      * 实际上我们可以直接将最后一个元素 5 移动到序列开头，取代元素 1，得到序列 [5,2,3,4]，同样满足题目要求。这个优化在序列中 val 元素的数量较少时非常有效。
      * <p>
@@ -96,5 +107,27 @@ public class Top027_simple {
             }
         }
         return left;
+    }
+
+    /**
+     * 暴力法
+     * 这个题目暴力的解法就是两层for循环，一个for循环遍历数组元素 ，第二个for循环更新数组。
+     * @param nums
+     * @param val
+     * @return
+     */
+    public int removeElement3(int[] nums, int val) {
+        int len = nums.length;
+        for (int i = 0; i < len; i++) {
+            // 发现需要移除的元素，就将数组集体向前移动一位
+            if (nums[i] == val) {
+                for (int j = i + 1; j < len; j++) {
+                    nums[j - 1] = nums[j];
+                }
+                i--; // 因为下表i以后的数值都向前移动了一位，所以i也向前移动一位
+                len--; // 此时数组的大小-1
+            }
+        }
+        return len;
     }
 }
