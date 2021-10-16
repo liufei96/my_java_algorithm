@@ -1,12 +1,21 @@
 package com.liufei.binarytree;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.List;
+import java.util.*;
 
 /**
- * 145. 二叉树的后序遍历  [ https://leetcode-cn.com/problems/binary-tree-postorder-traversal/ ]
+ * 94. 二叉树的中序遍历  [ https://leetcode-cn.com/problems/binary-tree-inorder-traversal/ ]
+ * <p>
+ * 示例 1：
+ * 输入：root = [1,null,2,3]
+ * 输出：[1,3,2]
+ * <p>
+ * 示例 2：
+ * 输入：root = []
+ * 输出：[]
+ * <p>
+ * 示例 3：
+ * 输入：root = [1]
+ * 输出：[1]
  */
 public class Leetcode94_simple {
 
@@ -17,6 +26,8 @@ public class Leetcode94_simple {
         List<Integer> list = leetcode94_simple.inorderTraversal(treeNode);
         System.out.println(list);
         System.out.println(leetcode94_simple.inorderTraversal2(treeNode));
+        System.out.println(leetcode94_simple.inorderTraversal3(treeNode));
+        System.out.println(leetcode94_simple.inorderTraversal4(treeNode));
     }
 
     /**
@@ -51,6 +62,52 @@ public class Leetcode94_simple {
             root = stack.pop();
             res.add(root.val);
             root = root.right;
+        }
+        return res;
+    }
+
+    public List<Integer> inorderTraversal3(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        if (root == null) return res;
+        Deque<TreeNode> stack = new ArrayDeque<>();
+        TreeNode cur = root;
+        while (!stack.isEmpty() || cur != null) {
+            if (cur != null) {
+                stack.push(cur);
+                cur = cur.left;
+            } else {
+                cur = stack.pop();
+                res.add(cur.val);
+                cur = cur.right;
+            }
+        }
+        return res;
+    }
+
+    /**
+     * 迭代统一处理。那我们就将访问的节点放入栈中，把要处理的节点也放入栈中但是要做标记。如何标记呢，就是要处理的节点放入栈之后，紧接着放入一个空指针作为标记。 这种方法也可以叫做标记法。
+     * @param root
+     * @return
+     */
+    public List<Integer> inorderTraversal4(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        if (root == null) return res;
+        Stack<TreeNode> stack = new Stack<>();
+        if (root != null) {
+            stack.push(root);
+        }
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.pop();
+            if (node != null) {
+                if (node.right != null) stack.push(node.right); // 添加右节点（空节点不入栈）
+                stack.push(node);  // 添加中节点
+                stack.push(null); // 中节点访问过，但是还没有处理，加入空节点做为标记。
+                if (node.left != null) stack.push(node.left); // 添加左节点（空节点不入栈）
+            } else {  // 只有遇到空节点的时候，才将下一个节点放进结果集
+                node = stack.peek();  // 重新取出栈中元素
+                stack.pop();
+                res.add(node.val);
+            }
         }
         return res;
     }
