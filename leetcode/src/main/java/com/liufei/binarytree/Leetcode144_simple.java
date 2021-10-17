@@ -52,14 +52,14 @@ public class Leetcode144_simple {
      * @return
      */
     public List<Integer> preorderTraversal(TreeNode root) {
-        List<Integer> res = new ArrayList<Integer>();
+        List<Integer> res = new ArrayList<>();
         preorder(root, res);
         return res;
     }
 
     public void preorder(TreeNode root, List<Integer> res) {
         if (root == null) return;
-        // 注意这一句。谦虚遍历放在最前面
+        // 注意这一句。前序遍历放在最前面
         res.add(root.val);
         preorder(root.left, res);
         preorder(root.right, res);
