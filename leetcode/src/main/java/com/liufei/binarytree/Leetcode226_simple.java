@@ -1,6 +1,9 @@
 package com.liufei.binarytree;
 
-import java.util.List;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * 翻转二叉树   [ https://leetcode-cn.com/problems/invert-binary-tree/ ]
@@ -35,18 +38,72 @@ public class Leetcode226_simple {
     public static void main(String[] args) {
         Leetcode226_simple leetcode226_simple = new Leetcode226_simple();
         TreeNode treeNode = new TreeNode(5, new TreeNode(4, new TreeNode(1), new TreeNode(2)), new TreeNode(6, new TreeNode(7), new TreeNode(8)));
-        TreeNode node = leetcode226_simple.invertTree(treeNode);
+        TreeNode node = leetcode226_simple.invertTree2(treeNode);
         System.out.println(node);
     }
 
+    /**
+     * 前序遍历
+     * @param root
+     * @return
+     */
     public TreeNode invertTree(TreeNode root) {
         if (root == null) return null;
-        TreeNode left = root.left;
         TreeNode right = root.right;
-        root.right = invertTree(left);
+        root.right = invertTree(root.left);
         root.left = invertTree(right);
         return root;
     }
 
+    /**
+     * 利用中序遍历
+     * @param root
+     * @return
+     */
+    public TreeNode invertTree2(TreeNode root) {
+        if (root == null) return null;
+        invertTree2(root.left); // 递归找到左节点
+        TreeNode rightNode = root.right;  // 保存右节点
+        root.right = root.left;
+        root.left = rightNode;
+        // 递归找到右节点 继续交换 : 因为此时左右节点已经交换了,所以此时的右节点为root.left
+        invertTree2(root.left);
+        return root;
+    }
 
+
+    /**
+     * 利用后序遍历
+     * @param root
+     * @return
+     */
+    public TreeNode invertTree3(TreeNode root) {
+        if (root == null) return null;
+        TreeNode leftNode = invertTree3(root.left);
+        TreeNode rightNode = invertTree3(root.right);
+        root.right = leftNode;
+        root.left = rightNode;
+        return root;
+    }
+
+
+    /**
+     * 利用层次遍历。广度吧
+     * @param root
+     * @return
+     */
+    public TreeNode invertTree4(TreeNode root) {
+        if (root == null) return null;
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            TreeNode node = queue.poll();
+            TreeNode leftNode = node.right;
+            node.right = node.left;
+            node.left = leftNode;
+            if (node.left != null) queue.offer(node.left);
+            if (node.right != null) queue.offer(node.right);
+        }
+        return root;
+    }
 }
