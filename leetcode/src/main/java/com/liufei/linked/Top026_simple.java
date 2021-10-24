@@ -33,7 +33,7 @@ public class Top026_simple {
         ListNode listNode = top026_simple.reverseList(head);
         System.out.println(listNode);
         ListNode head2 = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))));
-        System.out.println(top026_simple.reverseList3(head2));
+        System.out.println(top026_simple.reverseList2(head2));
     }
 
     /**
