@@ -30,10 +30,31 @@ public class Top007_simple {
 
     public static void main(String[] args) {
         // TODO
+        Top007_simple top007_simple = new Top007_simple();
+//        int x = 123;
+//        int x = -123;
+        int x = -1563847412;
+        System.out.println(top007_simple.reverse(x));
     }
 
     public int reverse(int x) {
-
-        return 0;
+        String str = String.valueOf(Math.abs(x));
+        int res = 0;
+        int tmp = 1;
+        for (int i = 1; i <= str.length(); i++) {
+            int num = (str.charAt(i - 1) - '0') * tmp;
+            if (num / tmp != (str.charAt(i - 1) - '0')) {
+                return 0;
+            }
+            if (x > 0 && Integer.MAX_VALUE - num < res) {
+                return 0;
+            }
+            if (x < 0 && Integer.MIN_VALUE + num > -res) {
+                return 0;
+            }
+            res += num;
+            tmp *= 10;
+        }
+        return x > 0 ? res : -res;
     }
 }

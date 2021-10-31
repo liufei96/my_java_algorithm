@@ -47,10 +47,10 @@ public class Top057_middle {
 
     public static void main(String[] args) {
         Top057_middle top057_middle = new Top057_middle();
-        // int[][] intervals = {{1, 2}, {3, 5}, {6, 7}, {8, 10}, {12, 16}};
-        // int[][] intervals = { {4, 8} };
-        int[][] intervals = { {1 , 3}, {6, 9} };
-        int[] newInterval = {2, 5};
+        int[][] intervals = {{1, 2}, {3, 5}, {6, 7}, {8, 10}, {12, 16}};
+        int[] newInterval = {4, 8};
+//        int[][] intervals = { {1 , 3}, {6, 9} };
+//        int[] newInterval = {2, 5};
         int[][] res = top057_middle.insert(intervals, newInterval);
         for (int i = 0; i < res.length; i++) {
             System.out.println(Arrays.toString(res[i]));
@@ -66,7 +66,7 @@ public class Top057_middle {
         for (int i = 0; i < intervals.length; i++) {
             if (intervals[i][1] >= newInterval[0] && intervals[i][0] <= newInterval[0]) {
                 index = i;
-            } else if  (intervals[i][1] < newInterval[0]) {
+            } else if (intervals[i][1] < newInterval[0]) {
                 index = i + 1;
             }
             if (intervals[i][1] < newInterval[0] || intervals[i][0] > newInterval[1]) {
