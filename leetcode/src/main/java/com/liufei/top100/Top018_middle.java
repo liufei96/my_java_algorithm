@@ -24,8 +24,8 @@ public class Top018_middle {
 
     public static void main(String[] args) {
         Top018_middle top018 = new Top018_middle();
-        int[] nums = {-1, 0, 1, 2, -1, -4};
-        int target = -1;
+        int[] nums = {2 ,2,2,2,2};
+        int target = 8;
         List<List<Integer>> lists = top018.fourSum(nums, target);
         System.out.println(lists);
     }
