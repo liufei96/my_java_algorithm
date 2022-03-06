@@ -77,6 +77,30 @@ public class Top020_simple {
     }
 
     /**
+     * 效率高。官方答案
+     * 时间复杂度：O(n)，其中 nn 是字符串 ss 的长度。
+     *
+     * @param s
+     * @return
+     */
+    public boolean isValid3(String s) {
+        Map<Character, Character> map = new HashMap<Character, Character>() {{
+            put('(', ')');
+            put('{', '}');
+            put('[', ']');
+        }};
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < s.length(); i++) {
+            if (map.containsKey(s.charAt(i))) {
+                stack.push(map.get(s.charAt(i)));
+            } else if (stack.isEmpty() || stack.pop() != s.charAt(i)) {
+                return false;
+            }
+        }
+        return stack.isEmpty();
+    }
+
+    /**
      * 效率不高
      *
      * @param s
