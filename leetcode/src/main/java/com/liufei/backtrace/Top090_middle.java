@@ -123,12 +123,4 @@ public class Top090_middle {
         return retList;
     }
 
-
-    void addSubstring(int nums, int begin, int end, List<Integer> tmp) {
-        boolean haveSome = false;
-        while (begin <= end) {
-
-        }
-    }
-
 }
