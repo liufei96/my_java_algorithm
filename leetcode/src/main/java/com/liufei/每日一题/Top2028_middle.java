@@ -59,8 +59,8 @@ public class Top2028_middle {
         for (int i = 0; i < len; i++) {
             remain -= rolls[i];
         }
-        // 注意：remain < 0 （没法分）    remain < n （不够分，存在0点的） remain > n * 6 (由至少一个分的超过6点)
-        if (remain < 0 || remain < n || remain > n * 6) {
+        // 注意：remain < n （不够分，存在0点的） remain > n * 6 (由至少一个分的超过6点)
+        if (remain < n || remain > n * 6) {
             return new int[0];
         }
         int[] res = new int[n];
