@@ -89,6 +89,7 @@ public class Top0954_middle {
     public boolean canReorderDoubled2(int[] arr) {
         Arrays.sort(arr);
         List<Integer> tmp = new ArrayList<>();
+        // 保证当前数，不会重复出现
         boolean[] visited = new boolean[arr.length];
         return backTrace(arr, visited, tmp);
     }
