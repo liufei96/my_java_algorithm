@@ -25,8 +25,17 @@ public class Top0479_hard {
 
     public static void main(String[] args) {
         int n = 3;
-        int i = largestPalindrome(n);
-        System.out.println(i);
+        int ans = largestPalindrome(n);
+        System.out.println(ans);
+
+        long a = (long) (Math.pow(10, n) - 1);
+        for (long i = a; i >= 0 ; i--) {
+            long num = i;
+            for (long j = i; j > 0 ; j /= 10) {
+                num = num * 10 + j % 10;
+            }
+            System.out.println(num);
+        }
     }
 
 
