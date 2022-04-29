@@ -2,7 +2,6 @@ package com.liufei.每日一题;
 
 /**
  * 427. 建立四叉树  [https://leetcode-cn.com/problems/construct-quad-tree/]
- *
  */
 public class Top0427_middle {
 
