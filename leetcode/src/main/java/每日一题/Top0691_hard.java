@@ -39,7 +39,6 @@ import java.util.Map;
  * stickers[i] 和 target 由小写英文单词组成
  */
 public class Top0691_hard {
-
     public static void main(String[] args) {
         String[] stickers = {"with", "example", "science"};
         String target = "thehat";
